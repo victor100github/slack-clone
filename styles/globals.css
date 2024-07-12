@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 97 31 105;
+    --secondary: 244 237 228;
+  }
+
+  html,
+  body,
+  #__next {
+    @apply m-0 h-dvh overflow-hidden p-0;
+  }
+}
+
+@layer components {
+  .bg-dots {
+    --dot-bg: rgb(var(--secondary) / 1);
+    --dot-color: rgb(var(--primary) / 1);
+    --dot-size: 1px;
+    --dot-space: 22px;
+    background:
+      linear-gradient(
+          90deg,
+          var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+          transparent 1%
+        )
+        center / var(--dot-space) var(--dot-space),
+      linear-gradient(
+          var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+          transparent 1%
+        )
+        center / var(--dot-space) var(--dot-space),
+      var(--dot-color);
+  }
+
+  .login-container {
+    @apply bg-dots flex h-dvh w-full items-center justify-center p-4;
+  }
+
+  .login-container__form-container {
+    @apply w-full  sm:w-1/2 xl:w-1/3;
+  }
+
+  .login-container__form {
+    @apply mb-6 rounded-lg bg-white p-8 shadow-lg transition-[height] duration-300 ease-linear;
+  }
+
+  .login-container__logo {
+    @apply flex justify-center py-8;
+  }
+
+  .login-container__form-label {
+    @apply block text-base font-medium;
+  }
+
+  .login-container__form-input {
+    @apply my-2 block w-full appearance-none rounded border bg-white px-2 py-3 text-base shadow;
+  }
+
+  .login-container__form-btn {
+    @apply rounded bg-primary px-4 py-3 text-center text-base text-white shadow-lg transition-all duration-300 hover:bg-opacity-95 hover:text-white;
+  }
+
+  .login-container__btn-link {
+    @apply text-base text-gray-600;
+  }
+
+  .login-container__btn-link > span {
+    @apply font-medium text-primary;
+  }
+
+  .login-container__loading {
+    @apply mt-6 flex w-full flex-col items-center justify-center;
+  }
+
+  .login-container__loading svg {
+    @apply animate-spin text-primary;
+  }
+
+  .login-container__loading p {
+    @apply text-base font-medium text-gray-500;
+  }
+
+  .layout__container {
+    @apply m-0 flex h-screen w-screen overflow-hidden p-0;
+  }
+
+  .layout__sidebar {
+    @apply flex overflow-y-scroll overflow-x-hidden xl:w-[330px] w-[80%] transition-all bg-gray-100 flex-grow-0 flex-shrink-0;
+  }
+
+  .layout__sidebar--close {
+    @apply overflow-hidden xl:w-[70px] w-0;
+  }
+
+  .layout__sidebar-1 {
+    @apply flex h-dvh flex-col items-start justify-start gap-3 bg-primary p-3;
+  }
+
+  .layout__sidebar-1__btn {
+    @apply grid h-[45px] w-[45px] place-items-center rounded-md bg-white;
+  }
+
+  .layout__sidebar-1__btn-trans {
+    @apply layout__sidebar-1__btn bg-opacity-35 backdrop-blur-sm;
+  }
+
+  .layout__sidebar-2 {
+    @apply w-full p-3;
+  }
+
+  .layout__sidebar-2__label {
+    @apply flex h-[45px] items-center justify-between;
+  }
+
+  .layout__sidebar-2__label > div {
+    @apply text-[20px] font-bold max-w-fit flex-grow-0 flex-shrink-0;
+  }
+
+  .layout__sidebar-2__label > button {
+    @apply max-w-fit rounded p-2 text-white transition duration-150 hover:bg-primary hover:bg-opacity-10;
+  }
+
+  .layout__user-indicator {
+    @apply flex;
+  }
+
+  .layout__user-indicator > div {
+    @apply flex h-[40px] w-[40px] items-center justify-center rounded-full border-[4px] border-solid border-white font-bold text-white shadow-sm;
+  }
+
+  .layout__channel-list li a:before {
+    content: "# ";
+    @apply opacity-50;
+  }
+
+  .layout__channel-list li a:hover {
+    @apply opacity-90;
+  }
+
+  .layout__channel-list__link {
+    @apply flex items-center justify-between py-1;
+  }
+
+  .layout__message {
+    @apply relative h-dvh flex-1 bg-white;
+  }
+
+  .layout__message-nav {
+    @apply z-50 absolute left-0 right-0 top-0 flex h-[69px] items-center justify-between border-b border-solid border-gray-100 bg-white px-4 shadow-sm;
+  }
+
+  .layout__message-chat {
+    @apply transition-all relative my-5 flex bg-white w-full  xl:w-[45%] flex-shrink-0 flex-grow-0 gap-2 space-x-2  items-end  px-5 py-2 ;
+    @apply rounded-md border border-solid border-white hover:border-primary hover:border-opacity-20 hover:shadow-md;
+  }
+
+  .layout__channel-chat-icon--left {
+    @apply absolute bottom-2 left-2 flex-shrink-0 flex-grow-0 hidden group-hover:flex min-h-10 min-w-10 items-center justify-center rounded-md border border-solid border-primary border-opacity-20 bg-white text-primary shadow-md;
+  }
+
+  .layout__channel-chat-icon--right {
+    @apply absolute bottom-2 right-2 flex-shrink-0 flex-grow-0 hidden group-hover:flex min-h-10 min-w-10 items-center justify-center rounded-md border border-solid border-primary border-opacity-20 bg-white text-primary shadow-md;
+  }
+  
+  .layout__channel-chat-message {
+    @apply w-full overflow-hidden xl:text-base text-sm;
+  }
+
+  .layout__channel-chat-title--right {
+    @apply text-right;
+  }
+
+  .layout__channel-chat-title {
+    @apply truncate font-medium text-primary;
+  }
+
+  .layout__channel-chat-title > span {
+    @apply ml-2 text-gray-500;
+  }
+
+  .layout__channel-chat-message-info {
+    @apply font-normal text-gray-900;
+  }
+
+  .layout__channel-chat-message-info--right {
+    @apply text-right;
+  }
+
+  .layout__message-input {
+    @apply w-full appearance-none overflow-hidden rounded-md border shadow;
+  }
+
+  .layout__message-input > input {
+    @apply w-full px-3 py-4 leading-tight text-gray-700 focus:outline-none;
+  }
+  .layout__message-input > div {
+    @apply flex items-center justify-end px-3 py-3 pr-5;
+  }
+  .layout__message-input > div > button {
+    @apply grid place-items-center;
+  }
+
+  .layout__message-input svg {
+    @apply text-gray-400 hover:text-gray-500;
+  }
+
+  .layout__inner-message {
+    @apply relative h-dvh;
+  }
+
+  .layout__inner-message__scroll {
+    @apply flex h-dvh flex-col-reverse overflow-y-auto px-4 py-[150px];
+  } 
+
+  .layout__inner-message__message{
+    @apply z-50 absolute bottom-0 left-0 w-full px-5 pb-8 pt-4 bg-white;
+  }
+}
